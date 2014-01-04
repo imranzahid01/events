@@ -1,4 +1,4 @@
-package com.imranzahid.events.web;
+package com.imranzahid.events.test.web;
 
 import com.britesnow.snow.testsupport.SnowTestSupport;
 import com.britesnow.snow.testsupport.mock.RequestContextMock;

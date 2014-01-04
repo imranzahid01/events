@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="DAO Integration Testing" parallel="false">
+  <test name="User Dao" verbose="1" annotations="JDK">
+    <classes>
+      <class name="com.imranzahid.events.test.dao.UserDaoTestNG" />
+    </classes>
+  </test>
+</suite>

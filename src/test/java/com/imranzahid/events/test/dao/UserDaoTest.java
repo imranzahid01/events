@@ -1,9 +1,10 @@
-package com.imranzahid.events.dao;
+package com.imranzahid.events.test.dao;
 
 import com.britesnow.snow.testsupport.SnowTestSupport;
 import com.britesnow.snow.util.MapUtil;
 import com.britesnow.snow.web.db.hibernate.HibernateSessionInViewHandler;
 import com.britesnow.snow.web.db.hibernate.SnowHibernateException;
+import com.imranzahid.events.dao.UserDao;
 import com.imranzahid.events.entity.User;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
