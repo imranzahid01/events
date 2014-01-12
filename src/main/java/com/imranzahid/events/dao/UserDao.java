@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 public class UserDao extends BaseHibernateDao<User> {
   @Nullable
   public User findUserByEmail(@Nonnull String userEmail) {
-    return findUnique("FROM User WHERE userEmail = :userEmail", MapUtil.deepMapIt("userEmail", userEmail));
+    return findUnique("FROM User WHERE userEmail = :userEmail",
+        MapUtil.deepMapIt("userEmail", userEmail, "active", "Y"));
   }
 }

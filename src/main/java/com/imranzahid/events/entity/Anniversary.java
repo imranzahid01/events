@@ -17,9 +17,6 @@ public class Anniversary extends BaseEntity {
   @Column(name = "flower")
   private String flower;
 
-  @Column(name = "active", length = 1, nullable = false)
-  private String active;
-
   public String getName() {
     return name;
   }
@@ -35,10 +32,6 @@ public class Anniversary extends BaseEntity {
   public void setFlower(String flower) {
     this.flower = flower;
   }
-
-  public boolean isActive() { return "Y".equalsIgnoreCase(active); }
-
-  public void setActive(boolean b) { this.active = (b?"Y":"N"); }
 
   @Override
   public boolean equals(Object o) {
@@ -58,9 +51,10 @@ public class Anniversary extends BaseEntity {
   @Override
   public String toString() {
     return "Anniversary{" +
-        "name='" + name + '\'' +
+        "id='" + super.getId() + '\'' +
+        ", name='" + name + '\'' +
         ", flower='" + flower + '\'' +
-        ", active='" + active + '\'' +
+        ", active='" + super.isActive() + '\'' +
         '}';
   }
 }

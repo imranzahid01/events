@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="DAO Integration Testing" parallel="false">
-  <test name="User Dao" verbose="1" annotations="JDK">
+<suite name="Application Testing" verbose="0" parallel="false">
+  <test name="User Dao">
     <classes>
       <class name="com.imranzahid.events.test.dao.UserDaoTestNG" />
+    </classes>
+  </test>
+
+  <test name="Category Dao">
+    <classes>
+      <class name="com.imranzahid.events.test.dao.CategoryDaoTestNG" />
+    </classes>
+  </test>
+
+  <test name="Relationship Dao">
+    <classes>
+      <class name="com.imranzahid.events.test.dao.RelationshipDaoTestNG" />
     </classes>
   </test>
 </suite>

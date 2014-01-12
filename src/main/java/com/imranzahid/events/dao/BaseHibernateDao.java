@@ -62,6 +62,23 @@ public class BaseHibernateDao<E extends BaseEntity> implements BaseDao<E> {
   }
 
   @Override @Nullable @SuppressWarnings("unchecked")
+  public Map<Long, E> listAll() {
+    Session session = daoHelper.getSession();
+    session.getTransaction().begin();
+    List<E> entities = (List<E>)session
+        .createCriteria(entityClass)
+        .add(Restrictions.eq("active", "Y"))
+        .list();
+    session.getTransaction().commit();
+    return Maps.uniqueIndex(entities, new Function<E, Long>() {
+      @Override @Nonnull
+      public Long apply(@Nonnull E input) {
+        return input.getId();
+      }
+    });
+  }
+
+  @Override @Nullable @SuppressWarnings("unchecked")
   public E findUnique(@Nonnull String query, @Nullable Map properties) {
     Session session = daoHelper.getSession();
     session.getTransaction().begin();

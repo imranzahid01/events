@@ -17,6 +17,7 @@ public interface BaseDao<E extends BaseEntity> {
 
   @Nullable E get(@Nonnull Long id);
   @Nullable Map<Long, E> get(@Nonnull Long ... ids);
+  @Nullable Map<Long, E> listAll();
   @Nullable E findUnique(@Nonnull String query, @Nullable Map properties);
   @Nullable E save(@Nonnull E entity);
 }

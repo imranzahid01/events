@@ -1,9 +1,6 @@
 package com.imranzahid.events.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 /**
  * @author Imran Zahid
@@ -13,6 +10,9 @@ import javax.persistence.MappedSuperclass;
 public class BaseEntity {
   private Long   id;
 
+  @Column(name = "active", length = 1, nullable = false)
+  private String active = "Y";
+
   @Id @GeneratedValue(strategy = GenerationType.AUTO)
   public Long getId() {
       return id;
@@ -20,6 +20,10 @@ public class BaseEntity {
   public void setId(Long id) {
       this.id = id;
   }
+
+  public boolean isActive() { return "Y".equalsIgnoreCase(active); }
+
+  public void setActive(boolean b) { this.active = (b?"Y":"N"); }
 
   @Override
   public boolean equals(Object o) {

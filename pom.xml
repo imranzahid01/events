@@ -33,24 +33,22 @@
         </configuration>
         <version>8.1.10.v20130312</version>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.16</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>src/test/resources/testing.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
   <dependencies>
     <!-- Provided Dependencies -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>6.1.1</version>
-      <scope>test</scope>
-    </dependency>
-
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
@@ -58,6 +56,15 @@
       <scope>provided</scope>
     </dependency>
     <!-- /Provided Dependencies -->
+
+    <!-- Testing Dependencies -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.8.7</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- /Testing Dependencies -->
 
     <!-- Snow -->
     <dependency>
@@ -67,11 +74,19 @@
     </dependency>
     <!-- /Snow -->
 
+    <!-- Logging dependencies -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.2</version>
+      <version>1.7.5</version>
     </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+    <!-- /Logging dependencies -->
 
     <!-- Database Dependencies -->
     <dependency>
@@ -93,13 +108,13 @@
     </dependency>
     <!-- /Database Dependencies -->
 
-    <!-- for the DAO Registry -->
+    <!-- DAO Registry -->
     <dependency>
       <groupId>com.googlecode.gentyref</groupId>
       <artifactId>gentyref</artifactId>
       <version>1.1.0</version>
     </dependency>
-    <!-- /for the DAO Registry -->
+    <!-- /DAO Registry -->
   </dependencies>
 
 </project>

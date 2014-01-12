@@ -72,6 +72,7 @@ public class UserDaoTestNG extends SnowTestSupportNG {
     User newUser = new User();
     newUser.setUserEmail(testEmail);
     newUser.setPassword("123");
+    newUser.setActive(true);
     userDao.save(newUser);
   }
 
@@ -84,6 +85,7 @@ public class UserDaoTestNG extends SnowTestSupportNG {
     User newUser = new User();
     newUser.setApi(UUID.randomUUID().toString());
     newUser.setPassword("123");
+    newUser.setActive(true);
     userDao.save(newUser);
   }
 
@@ -93,6 +95,19 @@ public class UserDaoTestNG extends SnowTestSupportNG {
       expectedExceptionsMessageRegExp = "Column 'password' cannot be null"*/
   )
   public void trySaveUserWithoutPassword() {
+    User newUser = new User();
+    newUser.setUserEmail(testEmail);
+    newUser.setApi(UUID.randomUUID().toString());
+    newUser.setActive(true);
+    userDao.save(newUser);
+  }
+
+  @Test(groups = {"user", "fail"},
+      dependsOnMethods = "trySaveUserWithoutPassword",
+      expectedExceptions = SnowHibernateException.class/*,
+      expectedExceptionsMessageRegExp = "Column 'active' cannot be null"*/
+  )
+  public void trySaveUserWithoutActive() {
     User newUser = new User();
     newUser.setUserEmail(testEmail);
     newUser.setApi(UUID.randomUUID().toString());
@@ -123,5 +138,13 @@ public class UserDaoTestNG extends SnowTestSupportNG {
   public void findById() {
     User mainUser = userDao.get(1L);
     Assert.assertNotNull(mainUser, "There should be a user with ID #1");
+  }
+
+  @Test(groups = {"user"},
+      dependsOnMethods = "findByEmail")
+  public void listAll() {
+    Map<Long, User> all = userDao.listAll();
+    Assert.assertNotNull(all, "Map should not have been null");
+    Assert.assertTrue(all.size() > 0, "Size of the map should be greater than one");
   }
 }

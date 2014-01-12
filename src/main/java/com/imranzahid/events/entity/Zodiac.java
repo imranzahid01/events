@@ -62,7 +62,9 @@ public class Zodiac extends BaseEntity {
   @Override
   public String toString() {
     return "Zodiac{" +
-        "name='" + name + '\'' +
+        "id='" + super.getId() + '\'' +
+        ", name='" + name + '\'' +
+        ", active='" + super.isActive() + '\'' +
         '}';
   }
 }

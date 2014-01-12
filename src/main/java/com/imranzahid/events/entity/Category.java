@@ -11,9 +11,6 @@ public class Category extends BaseEntity {
   @Column(name = "name", nullable = false)
   private String name;
 
-  @Column(name = "active", length = 1, nullable = false)
-  private String active;
-
   public String getName() {
     return name;
   }
@@ -21,10 +18,6 @@ public class Category extends BaseEntity {
   public void setName(String name) {
     this.name = name;
   }
-
-  public boolean isActive() { return "Y".equalsIgnoreCase(active); }
-
-  public void setActive(boolean b) { this.active = (b?"Y":"N"); }
 
   @Override
   public boolean equals(Object o) {
@@ -44,7 +37,9 @@ public class Category extends BaseEntity {
   @Override
   public String toString() {
     return "Category{" +
-        "name='" + name + '\'' +
+        "id='" + super.getId() + '\'' +
+        ", name='" + name + '\'' +
+        ", active='" + super.isActive() + '\'' +
         '}';
   }
 }

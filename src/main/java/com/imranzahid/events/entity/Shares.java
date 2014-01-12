@@ -100,9 +100,11 @@ public class Shares extends BaseEntity {
   @Override
   public String toString() {
     return "Shares{" +
-        "sname='" + name + '\'' +
+        "id='" + super.getId() + '\'' +
+        ", name='" + name + '\'' +
         ", categories='" + categories + '\'' +
         ", relations='" + relations + '\'' +
+        ", active='" + super.isActive() + '\'' +
         '}';
   }
 }

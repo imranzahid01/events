@@ -107,7 +107,11 @@ public class User extends BaseEntity {
   @Override
   public String toString() {
     return "User{" +
-        "userEmail='" + userEmail + '\'' +
+        "id='" + super.getId() + '\'' +
+        ", userEmail='" + userEmail + '\'' +
+        ", firstName='" + firstName + '\'' +
+        ", lastName='" + lastName + '\'' +
+        ", active='" + super.isActive() + '\'' +
         '}';
   }
 }

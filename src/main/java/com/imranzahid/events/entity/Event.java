@@ -9,7 +9,7 @@ import java.util.Date;
  */
 @Entity @Access(AccessType.FIELD)
 public class Event extends BaseEntity {
-  @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "id", insertable = false, updatable = false)
+  @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "id", insertable = false, updatable = false, nullable = false)
   private User user;
 
   @Temporal(TemporalType.TIMESTAMP)
@@ -19,14 +19,11 @@ public class Event extends BaseEntity {
   @Column(name = "ename", nullable = false)
   private String name;
 
-  @ManyToOne @JoinColumn(name = "id", insertable = false, updatable = false)
+  @ManyToOne @JoinColumn(name = "id", insertable = false, updatable = false, nullable = false)
   private Category category;
 
-  @ManyToOne @JoinColumn(name = "id", insertable = false, updatable = false)
+  @ManyToOne @JoinColumn(name = "id", insertable = false, updatable = false, nullable = false)
   private Relationship relationship;
-
-  @Column(name = "active", length = 1, nullable = false)
-  private String active;
 
   public User getUser() {
     return user;
@@ -68,14 +65,6 @@ public class Event extends BaseEntity {
     this.relationship = relationship;
   }
 
-  public boolean isActive() {
-    return "Y".equalsIgnoreCase(active);
-  }
-
-  public void setActive(boolean b) {
-    this.active = (b?"Y":"N");
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -94,8 +83,10 @@ public class Event extends BaseEntity {
   @Override
   public String toString() {
     return "Event{" +
-        "name='" + name + '\'' +
+        "id='" + super.getId() + '\'' +
+        ", name='" + name + '\'' +
         ", date=" + date +
+        ", active='" + super.isActive() + '\'' +
         '}';
   }
 }

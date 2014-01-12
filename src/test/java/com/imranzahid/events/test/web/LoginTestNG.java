@@ -1,11 +1,11 @@
 package com.imranzahid.events.test.web;
 
-import com.britesnow.snow.testsupport.SnowTestSupport;
+import com.britesnow.snow.testsupport.SnowTestSupportNG;
 import com.britesnow.snow.testsupport.mock.RequestContextMock;
 import com.britesnow.snow.util.MapUtil;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.util.Map;
 
@@ -15,10 +15,10 @@ import static com.britesnow.snow.testsupport.mock.RequestContextMockFactory.Requ
  * @author Imran Zahid
  *         date 12/28/13
  */
-public class LoginTest extends SnowTestSupport {
+public class LoginTestNG extends SnowTestSupportNG {
   @BeforeClass
   public static void initTestClass() throws Exception {
-    SnowTestSupport.initWebApplication("src/main/webapp");
+    SnowTestSupportNG.initWebApplication("src/main/webapp");
   }
 
   @Test
@@ -29,6 +29,6 @@ public class LoginTest extends SnowTestSupport {
         "password", "compaq"));
     webController.service(requestContext);
     Map result = requestContext.getResponseAsJson();
-    Assert.assertTrue("Unable to login to the application", (Boolean) result.get("success"));
+    Assert.assertTrue((Boolean) result.get("success"), "Unable to login to the application");
   }
 }
