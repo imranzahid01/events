@@ -11,6 +11,13 @@
     <property name="hibernate.connection.autocommit">true</property>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.connection.release_mode">on_close</property>
+    <property name="hibernate.cache.use_second_level_cache">false</property>
+    <property name="hibernate.c3p0.min_size">5</property>
+    <property name="hibernate.c3p0.max_size">20</property>
+    <property name="hibernate.c3p0.timeout">1800</property>
+    <property name="hibernate.show_sql">false</property>
     <mapping class="com.imranzahid.events.entity.BaseEntity" />
     <mapping class="com.imranzahid.events.entity.Anniversary" />
     <mapping class="com.imranzahid.events.entity.Category" />
